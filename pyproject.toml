@@ -1,0 +1,16 @@
+[project]
+name = "yet-another-flask-compose-boilerplate"
+version = "0.1.0"
+description = "Boilerplate for uv-fueled Docker-Flask-Compose-SQLAlchemy"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "flask>=3.1.0",
+    "marshmallow>=3.26.1",
+    "psycopg2-binary>=2.9.10",
+    "pytest>=8.3.5",
+    "quart>=0.20.0",
+    "sqlalchemy>=2.0.38",
+    "alembic>=1.14.1",
+    "ipython==9.0.1"
+]
