@@ -1,0 +1,45 @@
+version: '3.9'
+
+
+services:
+  postgres:
+    container_name: compose_flask_boilerplate_postgres
+    image: postgres:15.2-alpine
+    user: "root"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    env_file:
+      - database.conf
+    volumes:
+      - ./init_db.sh:/docker-entrypoint-initdb.d/init_db.sh
+      - ~/.postgres_data/compose_flask_boilerplate_postgres:/var/lib/postgresql/data:delegated
+    ports:
+      - 5432:5432
+    networks:
+      - default
+
+  # You can add other services here such as a Cron scheduler, Celery, or Redis broker:
+  main:
+    platform: linux/amd64
+    container_name: compose_flask_boilerplate
+    build:
+      context: .
+      args:
+        - BASE_IMAGE=python:3.12.9-slim-bullseye
+    ports:
+      - 9001:9001
+    command: python run_server.py
+    environment:
+      - PORT=80
+      - AUTORELOAD
+      - ENV=development
+    env_file:
+      - .env
+      - database.conf
+    volumes:
+      - $PWD:/home/app:delegated
+    networks:
+      - default
+    depends_on:
+      - postgres
