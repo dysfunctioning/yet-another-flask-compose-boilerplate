@@ -1,18 +1,46 @@
-# yet-another-flask-compose-boilerplate
+# 🦴 yet-another-flask-compose-boilerplate
 
-Gets all the backbones built so you can get to building fully-featured python projects faster
+Backbone for Python backend API, Postgres DB, and modular app. This was a project started as a need for the Archblock 2023 Hackathon. Tasked with building out a backend, API, and database for a Schulze Method Decentralized Election System project with a React/dApp frontend, I started this generic backbone to ensure future hackathons can be scaled up quicker and less hours were wasted on getting up and running. This project gets the backbone built so you can get to building fully-featured python projects faster.
 
-## Requirements
+Project Status: Functional, Incomplete (need to add logging, remove cruft, and fill out ORM repository methods)
+
+## 🎬 Getting Started
+
+This project was built to be plug-and-play, but it does require a few things to change:
+* Check out the `Requirements` below first
+* a `.env` file at the root dir
+* Updating env files and project names from the generic `compose_flask_boilerplate`
+
+On first run:
+1. `docker-compose build` - pulls down images from dockerhub and builds the project
+2. `docker-compose up -d -t0` - runs 
+3. Visit: `localhost:9001/heartbeat` to ensure the container is hosted properly
+4. `docker exec -it compose_flask_boilerplate bash` - enter the main container
+5. `alembic upgrade head` - Run the two migrations added to this repo and get the database workin' (planning on adding this step automatically to the build)
+
+## 🧪 Tests: 
+
+Invoke the full test suite:
+
+```
+docker exec -it compose_flask_boilerplate python runtests.py
+```
+
+`pytest` will automatically go through the project and run tests with any files with name prepended: **`test`**`_your_test_here.py`
+
+
+## 📋 Requirements
 
 * Docker: https://www.docker.com/
 * PostgreSQL
 * `uv` (`brew install uv`)
 
-## Basics:
+
+## ✍️ Basics:
 
 Check the Dockerfile & compose file to get started. The `Makefile` has some helpful commands to get you up and running faster
 
-## FAQ
+## 🤔 FAQ
 
 **Q: OK, but why?**
 
@@ -30,10 +58,8 @@ Check the Dockerfile & compose file to get started. The `Makefile` has some help
 
 **A**: Good question! While Flask-SQLAlchemy would allow you to get off the ground quicker, SQLAlchemy has trended toward the more pythonic Declarative Base which makes everything more explicit. Also, its less tech debt to upgrade these libraries individually. Suppose you wanted to move off of Flask and onto Django, FastAPI or some of the other tremendous python frameworks: this allows you to rip out Flask easier ;)
 
-## Instructions:
 
-
-### Working in the environment locally:
+### 👷 Working in the environment locally:
 
 `IPython` (interactive python) was added to this project for convenience - enter the `main` container with:
 
@@ -43,11 +69,11 @@ Then open a shell with `ipython` (TODO: add a command with initializers to have 
 
 
 
-### Adding a dependency:
+### 🔗 Adding a dependency:
 
 Don't ever touch the `uv.lock` file directly.  Head on over to the Makefile and call `make uv-update` to automatically update your Docker containers to have your new dependency
 
-### Updating the database:
+### 📊 Updating the database:
 
 I use Alembic to manage database migrations as its built by the SQLAlchemy team, but you may opt to replace this with Atlas in the future.  Some helpful alembic commands:
 
