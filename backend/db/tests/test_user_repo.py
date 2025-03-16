@@ -5,10 +5,15 @@ from backend.db.repository import user as user_repo
 pytestmark = pytest.mark.usefixtures('db', 'session')
 
 
-def test_user_get():
-	expected_user = user_repo.create_user(name='Chris', email='foo@bar.com')
-	user = user_repo.get_user(expected_user.id)
-	assert expected_user == user
+@pytest.fixture
+def user():
+	return user_repo.create_user(name='Chris', email='foo123@bar.com')
+
+
+def test_user_get(user):
+	user_from_db = user_repo.get_user(user.id)
+	assert user == user_from_db
+
 
 def test_user_create():
 	expected_user = User(name='Chris', email='test.create@foobar.com')

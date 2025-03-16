@@ -7,7 +7,9 @@ import db_config
 from flask import Flask, request
 from backend.app.configuration import config
 from backend.db.base import initialize_database
+from backend.lib.logger import get_logger
 
+logger = get_logger()
 
 def create_app():
     time.sleep(3)  # TODO: best to implement wait_for_db_is_ready as a decorator here
@@ -17,7 +19,6 @@ def create_app():
     flask_app.app_context().push()
     initialize_database()
     return flask_app
-
 
 
 app = create_app()
@@ -36,6 +37,5 @@ port = config.APP_PORT or 9001
 environment = os.environ.get('ENV', 'development')
 if __name__ == '__main__':
     if environment in ['development', 'testing']:
-        print(f'Spinning up {environment} Flask app')
-        print(port)
+        logger.info(f'Spinning up {environment} Flask app on port: {port}')
         app.run(host='0.0.0.0', port=port, debug=True)

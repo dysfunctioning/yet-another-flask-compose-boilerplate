@@ -6,7 +6,7 @@ import sys
 
 
 def main():
-    os.environ['ENV'] = 'testing'
+    os.environ['APP_ENV'] = 'testing'
     parser = argparse.ArgumentParser()
     args, pytest_args = parser.parse_known_args()
     try:

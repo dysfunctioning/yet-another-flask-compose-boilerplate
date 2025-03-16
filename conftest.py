@@ -52,7 +52,6 @@ def db_factory(request):
         def testdb():
             # Helper Function if extra hooks are needed
             def check_if_tables_exist(connection: Connection) -> bool:
-                print('Checking if tables exist')
                 table_query = text("select count(*) from information_schema.tables where table_schema='public'")
                 n_tables = list(connection.execute(table_query))[0][0]
                 return n_tables > 0
@@ -66,20 +65,16 @@ def db_factory(request):
             # Helper function to check if the test db exists:
             def check_and_reset_existing_test_db(engine_url: str, reset_db: bool = True):
                 # TODO: break this up
-                print(f'Checking for existing test db @ {engine_url}')
                 temp_engine = create_engine(engine_url)
                 temp_conn = temp_engine.connect()
                 temp_conn.execute(text('commit'))  # end the already open transaction
                 temp_query = text(
                    f'SELECT exists(SELECT 1 from pg_catalog.pg_database where datname = \'{TEST_DB_NAME}\')'
                 )
-                print(str(temp_query))
                 result_mapping = temp_conn.execute(temp_query).mappings().all()
-                print(result_mapping)
                 db_exists = False
                 tables_exist = None
 
-                # result_mapping: [{'exists': True}]
                 if result_mapping and result_mapping[0]['exists']:
                     db_exists = True
                     print('Test database already exists')

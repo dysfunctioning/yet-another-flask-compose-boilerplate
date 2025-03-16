@@ -3,6 +3,7 @@ import os
 class Base(object):
 	APP_PORT = 9001
 	DEBUG_SQL = True
+	DEFAULT_LOG_NAME = 'compose_backend'
 
 
 class Development(Base):
