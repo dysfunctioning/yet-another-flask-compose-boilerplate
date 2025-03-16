@@ -2,7 +2,7 @@
 
 Modular Backbone for Python backend API, Postgres DB, and customizable app. This was a project started as a need for the Archblock 2023 Hackathon. Tasked with building out a backend, API, and database for a Schulze Method Decentralized Election System project with a React/dApp frontend in under 48 hours, I started this project to ensure future hackathons can be scaled up quicker and less hours were wasted on getting up and running. This project has a backbone ready so you can get to building fully-featured python projects faster.
 
-Project Status: Functional, Incomplete (need to remove cruft, fill out ORM repository methods, and cover the project with more tests)
+**Project Status**: Functional, Incomplete (need to remove cruft, fill out ORM repository methods, and cover the project with more tests)
 
 
 ## 📋 Requirements
@@ -16,10 +16,9 @@ Homebrew for Mac is recommended but not required: everything is Dockerized :)
 
 ## 🎬 Getting Started
 
-This project was built to be plug-and-play, but it does require a few things to change:
-* Check out the `Requirements` below first
+This project was built to be plug-and-play, but it does require a few things to add/change:
 * a `.env` file at the root dir
-* Updating env files and project names from the generic `compose_flask_boilerplate`
+* Updating env files and project names from the generic `compose_flask_boilerplate` (TODO: Clean up env files)
 
 On first run:
 1. `docker-compose build` - pulls down images from dockerhub and builds the project
