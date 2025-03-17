@@ -109,8 +109,8 @@ Your first migration can be messy with alembic (watch out for empty migration fi
 
 ```
 docker ps
-docker exec -it compose_flask_boilerplate_postgres bash
-psql -U root -d compose_flask_boilerplate
+docker exec -it [DB_CONTAINER_NAME] bash
+psql -U root -d [DB_NAME]
 
 DROP TABLE IF EXISTS alembic_version;
 ```
