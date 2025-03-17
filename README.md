@@ -17,6 +17,7 @@ Homebrew for Mac is recommended but not required: everything is Dockerized :)
 ## 🎬 Getting Started
 
 This project was built to be plug-and-play, but it does require a few things to add/change:
+* Update the names in `docker-comopse.yml` and `database.conf`. If you're deploying to Heroku/Vercel, you may need to read their docs on getting the env files registered correctly (see `db_config.py` for a Heroku "gotcha").
 * a `.env` file at the root dir
 * Updating env files and project names from the generic `compose_flask_boilerplate` (TODO: Clean up env files)
 
