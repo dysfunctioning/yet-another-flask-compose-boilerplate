@@ -33,7 +33,7 @@ On first run:
 Invoke the full test suite:
 
 ```
-docker exec -it compose_flask_boilerplate python runtests.py [args]
+docker exec -it [CONTAINER_NAME] python runtests.py [args]
 ```
 
 `pytest` will automatically go through the project and run tests with any files with name prepended: **`test`**`_your_test_here.py`
