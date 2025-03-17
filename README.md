@@ -25,7 +25,7 @@ On first run:
 1. `docker-compose build` - pulls down images from dockerhub and builds the project
 2. `docker-compose up -d -t0` - runs 
 3. Visit: `localhost:9001/heartbeat` to ensure the container is hosted properly
-4. `docker exec -it compose_flask_boilerplate bash` - enter the main container
+4. `docker exec -it [CONTAINER_NAME] bash` - enter the main container
 5. `alembic upgrade head` - Run the two migrations added to this repo and get the database workin' (planning on adding this step automatically to the build)
 
 ## 🧪 Tests: 
