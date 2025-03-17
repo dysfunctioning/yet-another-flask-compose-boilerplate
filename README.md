@@ -66,7 +66,7 @@ Check the Dockerfile & compose file to get started. The `Makefile` has some help
 
 `IPython` (interactive python) was added to this project for convenience - enter the `main` container with:
 
-`docker exec -it compose_flask_boilerplate bash`
+`docker exec -it [CONTAINER_NAME] bash`
 
 Then open a shell with `ipython` (TODO: add a command with initializers to have DB ready)
 
