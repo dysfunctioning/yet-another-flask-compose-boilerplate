@@ -5,6 +5,7 @@ description = "Boilerplate for uv-fueled Docker-Flask-Compose-SQLAlchemy"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "easydict>=1.13",
     "flask>=3.1.0",
     "marshmallow>=3.26.1",
     "psycopg2-binary>=2.9.10",

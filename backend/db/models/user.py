@@ -13,7 +13,7 @@ from sqlalchemy.orm import relationship
 class User(Base):
     __tablename__ = 'user'
 
-    # TODO: Use BigIDs here!
+    # TODO: Determine BigIDs vs GUID:
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String())
     email: Mapped[str] = mapped_column(String())
